@@ -11,7 +11,7 @@ function MainNavigation() {
             <Link href="/">All Articles</Link>
           </li>
           <li>
-            <Link href="/new-article">Add New Article</Link>
+            <Link href="/new-articles">Add New Article</Link>
           </li>
         </ul>
       </nav>
