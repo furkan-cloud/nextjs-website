@@ -1,5 +1,6 @@
 import React from "react";
 import ArticleList from "../components/articles/ArticleList";
+import { MongoClient } from "mongodb";
 
 const DUMMY_ARTICLES = [
   {
@@ -20,8 +21,35 @@ const DUMMY_ARTICLES = [
   },
 ];
 
-const HomePage = () => {
-  return <ArticleList articles={DUMMY_ARTICLES} />;
+const HomePage = (props) => {
+  return <ArticleList articles={props.articles} />;
 };
+
+export async function getStaticProps() {
+  // fetch data from api
+
+  const client = await MongoClient.connect(
+    process.env.MONGO_URL
+  );
+  const db = client.db();
+
+  const articleCollection = db.collection("articles");
+
+  const articles = await articleCollection.find().toArray();
+
+  client.close();
+
+  return {
+    props: {
+      articles: articles.map((article) => ({
+        title: article.title,
+        image: article.image,
+        description: article.description,
+        id: article._id.toString(),
+      })),
+    },
+    revalidate: 1,
+  };
+}
 
 export default HomePage;
