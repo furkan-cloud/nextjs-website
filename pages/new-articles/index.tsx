@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
 import NewArticle from "../../components/articles/NewArticle";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const NewArticlePage = () => {
   const router = useRouter();
@@ -23,7 +24,15 @@ const NewArticlePage = () => {
     router.push("/");
   }
 
-  return <NewArticle onAddArticle={addArticleHandler} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>Add new article</title>
+        <meta name="description" content="Add articles about IT" />
+      </Head>
+      <NewArticle onAddArticle={addArticleHandler} />
+    </Fragment>
+  );
 };
 
 export default NewArticlePage;

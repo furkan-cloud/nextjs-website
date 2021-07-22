@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ArticleList from "../components/articles/ArticleList";
 import { MongoClient } from "mongodb";
+import Head from "next/head";
 
 const DUMMY_ARTICLES = [
   {
@@ -22,15 +23,21 @@ const DUMMY_ARTICLES = [
 ];
 
 const HomePage = (props) => {
-  return <ArticleList articles={props.articles} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>Articles</title>
+        <meta name="description" content="Articles about IT" />
+      </Head>
+      <ArticleList articles={props.articles} />
+    </Fragment>
+  );
 };
 
 export async function getStaticProps() {
   // fetch data from api
 
-  const client = await MongoClient.connect(
-    process.env.MONGO_URL
-  );
+  const client = await MongoClient.connect(process.env.MONGO_URL);
   const db = client.db();
 
   const articleCollection = db.collection("articles");
