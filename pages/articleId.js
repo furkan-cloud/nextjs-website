@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import ArticleDetail from "../../components/articles/ArticleDetail";
+import ArticleDetail from "../components/articles/ArticleDetail";
 import { MongoClient, ObjectId } from "mongodb";
 import Head from "next/head";
 
