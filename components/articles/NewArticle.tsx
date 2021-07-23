@@ -4,9 +4,9 @@ import Card from "../ui/Card";
 import classes from "./NewArticle.module.css";
 
 function NewArticle(props) {
-  const titleInputRef = useRef();
-  const imageInputRef = useRef();
-  const descriptionInputRef = useRef();
+  const titleInputRef = useRef<HTMLInputElement>();
+  const imageInputRef = useRef<HTMLInputElement>();
+  const descriptionInputRef = useRef<HTMLTextAreaElement>();
 
   function submitHandler(event) {
     event.preventDefault();
