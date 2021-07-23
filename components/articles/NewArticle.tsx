@@ -40,7 +40,7 @@ function NewArticle(props) {
           <textarea
             id="description"
             required
-            rows="5"
+            rows = {5}
             ref={descriptionInputRef}
           ></textarea>
         </div>

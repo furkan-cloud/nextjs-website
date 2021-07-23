@@ -4,10 +4,10 @@ import Card from "../ui/Card";
 import classes from "./ArticleItem.module.css";
 
 const ArticleItem = (props) => {
-    const router = useRouter()
-    function showDetailHandler() {
-router.push("/" + props.id)
-    }
+  const router = useRouter();
+  function showDetailHandler() {
+    router.push("/" + props.id);
+  }
   return (
     <li className={classes.item}>
       <Card>
